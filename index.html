@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>document</title>
+    <style>
+        /* Wordpressテーマ「Lightning」に沿ったレスポンシブ設定 */
+        .container {
+            margin: 20px auto;
+            padding-left: 15px;
+            padding-right: 15px;
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 575px) {
+
+            /* containerサイズ100% */
+            .container {
+                width: 100%;
+            }
+        }
+
+        @media (min-width: 576px) {
+
+            /* containerサイズ690px */
+            .container {
+                width: 510px;
+            }
+        }
+
+        @media (min-width: 768px) {
+
+            /* containerサイズ690px */
+            .container {
+                width: 690px;
+            }
+        }
+
+        @media (min-width: 993px) {
+
+            /* containerサイズ960px(サイドバー有：610px） */
+            .container {
+                width: 960px;
+            }
+        }
+
+        @media (min-width: 1201px) {
+
+            /* containerサイズ1140px(サイドバー有：730px） */
+            .container {
+                width: 1140px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="topslideshow">
+
+            <div class="slides">
+                <picture>
+                    <source media="(max-width: 768px)" srcset="./images/topslides/slide_sp_01.jpg">
+                    <img src="./images/topslides/slide_pc_01.jpg" alt="事業内容紹介">
+                </picture>
+                <div class="contents">
+                    <div class="catch">北九州で輝くすべての企業へ、確かなチカラと未来を。</div>
+                    <a href="#business_info" class="bt_slides">事業内容紹介</a>
+                </div>
+            </div>
+
+            <div class="slides">
+                <picture>
+                    <source media="(max-width: 768px)" srcset="./images/topslides/slide_sp_02.jpg">
+                    <img src="./images/topslides/slide_pc_02.jpg" alt="コピー機・複合機">
+                </picture>
+                <div class="contents">
+                    <div class="catch">業務を止めない信頼の品質と、安心のフルサポート。</div>
+                    <a href="#business_info" class="bt_slides">コピー機・複合機</a>
+                </div>
+            </div>
+
+            <div class="slides">
+                <picture>
+                    <source media="(max-width: 768px)" srcset="./images/topslides/slide_sp_03.jpg">
+                    <img src="./images/topslides/slide_pc_03.jpg" alt="ビジネスフォン・ひかり電話">
+                </picture>
+                <div class="contents">
+                    <div class="catch">クリアな通信とコスト削減で、オフィスのつながりを強化。</div>
+                    <a href="#business_info" class="bt_slides">ビジネスフォン・ひかり電話</a>
+                </div>
+            </div>
+
+            <div class="slides">
+                <picture>
+                    <source media="(max-width: 768px)" srcset="./images/topslides/slide_sp_04.jpg">
+                    <img src="./images/topslides/slide_pc_04.jpg" alt="パソコン・サーバー">
+                </picture>
+                <div class="contents">
+                    <div class="catch">快適な動作と堅牢な管理で、社内IT環境を最適化。</div>
+                    <a href="#business_info" class="bt_slides">パソコン・サーバー</a>
+                </div>
+            </div>
+
+            <div class="slides">
+                <picture>
+                    <source media="(max-width: 768px)" srcset="./images/topslides/slide_sp_05.jpg">
+                    <img src="./images/topslides/slide_pc_05.jpg" alt="防犯カメラ・ネットカメラ">
+                </picture>
+                <div class="contents">
+                    <div class="catch">24時間オフィスの安全を見守る、確かな安心と防犯対策。</div>
+                    <a href="#business_info" class="bt_slides">防犯カメラ・ネットカメラ</a>
+                </div>
+            </div>
+
+            <div class="slides">
+                <picture>
+                    <source media="(max-width: 768px)" srcset="./images/topslides/slide_sp_06.jpg">
+                    <img src="./images/topslides/slide_pc_06.jpg" alt="ネットワーク設計構築">
+                </picture>
+                <div class="contents">
+                    <div class="catch">高速・安定・セキュア、ビジネスを支える強固な通信基盤。</div>
+                    <a href="#business_info" class="bt_slides">ネットワーク設計構築</a>
+                </div>
+            </div>
+
+            <div class="slides">
+                <picture>
+                    <source media="(max-width: 768px)" srcset="./images/topslides/slide_sp_07.jpg">
+                    <img src="./images/topslides/slide_pc_07.jpg" alt="Web制作（ホームページ）">
+                </picture>
+                <div class="contents">
+                    <div class="catch">企業の魅力を最大限に伝え、成果を生み出すWebサイト。</div>
+                    <a href="#business_info" class="bt_slides">Web制作（ホームページ）</a>
+                </div>
+            </div>
+
+            <div class="slide_control">
+                <div class="handler">
+                    <button type="button" class="prev" aria-label="前のスライド"></button>
+                    <button type="button" class="next" aria-label="次のスライド"></button>
+                </div>
+                <div class="indicator">
+                    <button type="button" class="dot active" aria-label="1枚目のスライドへ"></button>
+                    <button type="button" class="dot" aria-label="2枚目のスライドへ"></button>
+                    <button type="button" class="dot" aria-label="3枚目のスライドへ"></button>
+                    <button type="button" class="dot" aria-label="4枚目のスライドへ"></button>
+                    <button type="button" class="dot" aria-label="5枚目のスライドへ"></button>
+                    <button type="button" class="dot" aria-label="6枚目のスライドへ"></button>
+                    <button type="button" class="dot" aria-label="7枚目のスライドへ"></button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+
+</html>

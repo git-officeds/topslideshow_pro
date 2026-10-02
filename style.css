@@ -1,0 +1,238 @@
+@charset "UTF-8";
+
+/****************************************
+  トップスライドショー
+****************************************/
+:root{
+    --button-color: dodgerblue;
+}
+
+/* 全体設定 */
+.topslideshow *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+/* コンテナ */
+.topslideshow{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: 80vh;
+    font-size: 16px;
+    overflow: hidden;
+}
+@media (max-width:768px) {
+    .topslideshow{
+        height: auto;
+        aspect-ratio: 1 / 1;
+    }
+}
+
+/* 各スライド */
+.topslideshow .slides{
+    position: absolute;
+    top: 0; left : 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: 0.5s;
+    pointer-events: none;
+}
+.topslideshow .slides.show{
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* スライド切替アニメーション（テキストは左から、画像は右からフロートイン） */
+@keyframes floatInFromLeft{
+    from{ transform: translateX(-30px);  opacity: 0; }
+    to{   transform: translateX(0px);    opacity: 1; }
+}
+@keyframes floatInFromRight{
+    from{ transform: translateX(30px) scale(1.0);  opacity: 0; }
+    to{   transform: translateX(0px)  scale(1.05); opacity: 1; }
+}
+.topslideshow .slides .contents.float-in{
+    animation: floatInFromLeft 1s ease-in;
+}
+.topslideshow .slides img.float-in{
+    animation: floatInFromRight 1s ease-in;
+}
+
+/* スライド切替後のアニメーション（テキストは左から、画像は右からわずかに動く） */
+@media (min-width: 769px){
+    .topslideshow .slides.showed picture img{
+        animation: infinit_float_l 5s ease-out;
+    }
+}
+@keyframes infinit_float_l {
+    0%{ transform: scale(1.05) translateX(0px); object-position: 0px center;}
+    100%{ transform: scale(1.10) translateX(-20px); object-position: -20px center;}
+}
+/* @keyframes infinit_float_l {
+    0%{ object-position: 0px center; }
+    100%{ object-position: -30px center; }
+} */
+
+/* スライド画像 */
+.topslideshow .slides img{
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 0px center;
+}
+
+/* スライド内のテキストコンテンツ */
+.topslideshow .slides .contents{
+    position: absolute;
+    top: 20%; left: 10%;
+    display: block;
+    width: fit-content;
+    max-width: 400px;
+    background-color: rgba(0,0,0,0.4);
+    /* 背景だけをぼかす */
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px); /* Safari対応 */
+    padding: 20px;
+}
+@media (max-width: 480px){
+    .topslideshow .slides .contents{
+        top: 50%; left: 50%;
+        transform: translate(-50%,-50%);
+        width: 80%;
+    }
+}
+@media (min-width: 481px){
+    .topslideshow .slides.showed .contents{
+        animation: infinit_float_r 5s linear;
+    }
+}
+@keyframes infinit_float_r {
+    0%{ transform: translateX(0px); }
+    100%{ transform: translateX(30px); }
+}
+
+/* キャッチコピー */
+.topslideshow .slides .contents .catch{
+    font-size: 1.6em;
+    color: #FFF;
+}
+@media (max-width: 560px) {
+    .topslideshow .slides .contents .catch{
+        font-size: 18px;
+    }
+}
+@media (max-width: 480px) {
+    .topslideshow .slides .contents .catch{
+        font-size: 16px;
+    }
+}
+
+/* リンクボタン */
+.topslideshow .slides .contents .bt_slides{
+    display: block;
+    width: fit-content;
+    margin-top: 16px;
+    padding: 8px 24px;
+    border-radius: 4px;
+    border: 1px solid var(--button-color);
+    background-color: var(--button-color);
+    color: #fff;
+    font-size: 0.9em;
+    text-decoration: none;
+    transition: 0.3s;
+}
+.topslideshow .slides .contents .bt_slides:hover{
+    background-color: #fff;
+    color: var(--button-color);
+}
+
+/* 左右ハンドル */
+.topslideshow .slide_control .handler{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 20px;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+.topslideshow .slide_control .handler button{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;aspect-ratio: 1 / 1;
+    border: none;
+    border-radius: 50%;
+    background-color: rgba(0,0,0,0.4);
+    color: #FFF;
+    font-size: 1.2em;
+    line-height: 1;
+    cursor: pointer;
+    transition: 0.3s;
+}
+@media (max-width:567px){
+    .topslideshow .slide_control .handler button{
+        width: 32px;
+    }
+}
+.topslideshow .slide_control .handler button:hover{
+    background-color: rgba(255,255,255,0.8);
+    color: #000;
+}
+.topslideshow .slide_control .handler button:before,
+.topslideshow .slide_control .handler button:after{
+    content: "";
+    position: absolute;
+    top: calc(50% - 1.5px); left: 50%;
+    display: block;
+    width: 40%;
+    height: 3px;
+    background-color: white;
+    border-radius: 10px;
+    /* transform-origin: 50% 0%; */
+}
+.topslideshow .slide_control .handler button:before{
+    transform: rotate(-45deg) translate(-50%, -25%);
+}
+.topslideshow .slide_control .handler button:after{
+    transform: rotate(45deg) translate(-50%, 25%);
+}
+.topslideshow .slide_control .handler .prev{
+    transform: scaleX(-1);
+}
+
+/* インジケーター */
+.topslideshow .slide_control .indicator{
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    display: flex;
+    gap: 10px;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+.topslideshow .slide_control .indicator .dot{
+    width: 10px;
+    height: 10px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background-color: rgba(255,255,255,0.5);
+    cursor: pointer;
+    transition: 0.3s;
+}
+.topslideshow .slide_control .indicator .dot:hover{
+    background-color: rgba(255,255,255,0.8);
+}
+.topslideshow .slide_control .indicator .dot.active{
+    background-color: #fff;
+}
