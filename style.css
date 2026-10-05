@@ -53,35 +53,36 @@
 /* 【SP】スライド切替アニメーション（テキストは下から、画像は拡大） */
 @keyframes floatInFromLeft_sp {
     0% {
-        /* transform: translateY(-30px); */
         opacity: 0;
+        animation-timing-function: ease-in; /* 0%→50%の区間だけease-in */
     }
 
     50% {
-        /* transform: translateY(-15px); */
         opacity: 1;
     }
 
     100% {
-        /* transform: translateX(0px); */
         opacity: 1;
+        animation-timing-function: ease-out;
     }
 }
 
 @keyframes floatInFromRight_sp {
     0% {
-        transform: translateX(30px) scale(1.0);
+        transform:scale(1.0);
         opacity: 0;
+        animation-timing-function: ease-in; /* 0%→50%の区間だけease-in */
     }
 
     50% {
-        transform: translateX(15px) scale(1.05);
+        transform: scale(1.05);
         opacity: 1;
     }
 
     100% {
-        transform: translateX(0px) scale(1.10);
+        transform: scale(1.10);
         opacity: 1;
+        animation-timing-function: ease-out;
     }
 }
 
@@ -100,6 +101,7 @@
     0% {
         transform: translateX(-30px);
         opacity: 0;
+        animation-timing-function: ease-in; /* 0%→50%の区間だけease-in */
     }
 
     50% {
@@ -115,12 +117,13 @@
 
 @keyframes floatInFromRight {
     0% {
-        transform: translateX(30px) scale(1.0);
+        transform: translateX(10px) scale(1.0);
         opacity: 0;
+        animation-timing-function: ease-in; /* 0%→50%の区間だけease-in */
     }
 
     50% {
-        transform: translateX(15px) scale(1.05);
+        transform: translateX(5px) scale(1.05);
         opacity: 1;
     }
 
